@@ -66,7 +66,7 @@ function limit(element)
 <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartMin">
 
      
-<select id = "AMPM1">
+<select id = "AMPMStart">
    <option value = "0">AM</option>
    <option value = "12">PM</option>
 </select> - 
@@ -75,7 +75,7 @@ function limit(element)
 <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndMin">
 
        
-<select id = "AMPM2">
+<select id = "AMPMEnd">
    <option value = "0">AM</option>
    <option value = "12">PM</option>
 </select> 
@@ -94,8 +94,19 @@ var StartMin = +document.getElementById("StartMin").value;
 var EndHour = +document.getElementById("EndHour").value;
 var EndMin= +document.getElementById("EndMin").value;
 
+<!-- help with drop down getting values -->
+<!-- https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-  -->
+
+var e = document.getElementById("AMPMStart");
+var AMPMStart = e.options[e.selectedIndex].value;
+
+var e = document.getElementById("AMPMEnd");
+var AMPMEnd = e.options[e.selectedIndex].value;
+
   document.getElementById("Answer").innerHTML = 
-  StartHour + StartMin + EndHour + EndMin;
+  StartHour + StartMin 
+  + EndHour + EndMin
+  + AMPMStart + AMPMEnd;
 }
 </script>
     
