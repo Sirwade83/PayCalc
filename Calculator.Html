@@ -11,7 +11,7 @@
 
         <style>
         input[type=text]{
-           width: 16px;
+           width: 20px;
            } 
         </style>
 
@@ -67,7 +67,7 @@ function limit(element)
 
      
 <select id = "AMPM1">
-   <option value = "1">AM</option>
+   <option value = "0">AM</option>
    <option value = "12">PM</option>
 </select> - 
 
@@ -76,7 +76,7 @@ function limit(element)
 
        
 <select id = "AMPM2">
-   <option value = "1">AM</option>
+   <option value = "0">AM</option>
    <option value = "12">PM</option>
 </select> 
 
@@ -89,9 +89,13 @@ function limit(element)
       
 <script>
 function Calculate() {
-var x = +document.getElementById("StartHour").value;
-  x = x + 3;
-  document.getElementById("Answer").innerHTML = x;
+var StartHour = +document.getElementById("StartHour").value;
+var StartMin = +document.getElementById("StartMin").value;
+var EndHour = +document.getElementById("EndHour").value;
+var EndMin= +document.getElementById("EndMin").value;
+
+  document.getElementById("Answer").innerHTML = 
+  StartHour + StartMin + EndHour + EndMin;
 }
 </script>
     
