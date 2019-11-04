@@ -6,19 +6,28 @@
         <title> 
               CommGap Pay Calculator
         </title> 
+
+<!-- Css solution to width problem -->
+<!-- https://stackoverflow.com/questions/22709792/input-type-number-wont-resize -->
+
+        <style>
+        input[type=number]{
+           width: 16px;
+           } 
+        </style>
+
     </head> 
       
     <body> 
-
+    
 <!-- Code example from https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_number_get -->
-
           <h3>Enter your work times:</h3>
 
-<input type="number" id="StartHour" width="2">:
-<input type="number" id="StartMinutes" width="2"> - 
+<input type="number" id="StartHour">:
+<input type="number" id="StartMinutes"> - 
 
-<input type="number" id="EndHour" width="2">:
-<input type="number" id="EndMinutes" width="2">
+<input type="number" id="EndHour">:
+<input type="number" id="EndMinutes">
 
 <p>Click the button to calculate</p>
 
