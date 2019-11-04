@@ -6,6 +6,14 @@
         <title> 
               CommGap Pay Calculator
         </title> 
+      <!-- Css solution to width problem -->
+<!-- https://stackoverflow.com/questions/22709792/input-type-number-wont-resize -->
+
+        <style>
+        input[type=text]{
+           width: 16px;
+           } 
+        </style>
     </head> 
       
     <body> 
@@ -15,16 +23,16 @@
       
 <h3>Enter your work times:</h3>
 
-<input type="text" id="StartHour" size = "2">:
-<input type="text" id="StartMinutes" size = "2>
+<input type="text" id="StartHour">:
+<input type="text" id="StartMinutes">
      
 <select id = "AMPM1">
    <option value = "1">AM</option>
    <option value = "12">PM</option>
 </select> - 
 
-<input type="text" id="EndHour" size = "2>:
-<input type="text" id="EndMinutes" size = "2>
+<input type="text" id="EndHour">:
+<input type="text" id="EndMinutes">
        
 <select id = "AMPM2">
    <option value = "1">AM</option>
