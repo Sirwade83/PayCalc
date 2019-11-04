@@ -105,7 +105,7 @@ var element = document.getElementById("AMPMEnd");
 var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
   
   Var TotalEndMin = ((EndHour + AMPMEnd) * 60) + EndMin;
-  Var TotalStartMin = ((StartHour + AMPMStart * 60) + EndMin;
+  Var TotalStartMin = ((StartHour + AMPMStart) * 60) + EndMin;
 
 document.getElementById("Answer").innerHTML = TotalEndMin - TotalStartMin
 
