@@ -1,0 +1,16 @@
+
+<!DOCTYPE html> 
+  
+<html> 
+    <head> 
+        <title> 
+              CommGap Pay Calculator
+        </title> 
+    </head> 
+      
+    <body> 
+          <script>
+          <input type="number">
+          </script>
+    </body> 
+</html> 
