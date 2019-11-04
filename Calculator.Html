@@ -15,8 +15,25 @@
            } 
         </style>
     </head> 
+
+<!--Make full screen code from: -->
+<!--https://stackoverflow.com/questions/1719452/how-to-make-a-div-always-full-screen -->
+
+<style type="text/css">
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        #wrapper {
+            min-height: 100%; 
+        }
+    </style>
+
       
     <body> 
+
+  <div id="wrapper">
 
 <!-- JavaScript to limit number of spaces able to be entered -->
 <!-- https://stackoverflow.com/questions/9841363/how-to-restrict-number-of-characters-that-can-be-entered-in-html5-number-input-f -->
@@ -69,6 +86,6 @@ var x = +document.getElementById("StartHour").value;
   document.getElementById("Answer").innerHTML = x;
 }
 </script>
-
+    </div>
     </body> 
 </html> 
