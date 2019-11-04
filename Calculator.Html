@@ -97,10 +97,10 @@ var EndMin= +document.getElementById("EndMin").value;
 <!-- help with drop down getting values -->
 <!-- https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-  -->
 
-var e = document.getElementById("AMPMStart");
+var e = +document.getElementById("AMPMStart");
 var AMPMStart = e.options[e.selectedIndex].value;
 
-var e = document.getElementById("AMPMEnd");
+var e = +document.getElementById("AMPMEnd");
 var AMPMEnd = e.options[e.selectedIndex].value;
 
   document.getElementById("Answer").innerHTML = 
