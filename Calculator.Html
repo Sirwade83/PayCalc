@@ -103,12 +103,14 @@ var AMPMStart = parseInt(element.options[element.selectedIndex].value, 10);
 var element = document.getElementById("AMPMEnd");
 
 var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
+  
+  TotalEndMin = ((EndHour + AMPMEnd) * 60) + EndMin;
+  TotalStartMin = ((StartHour + AMPMStart * 60) + EndMin;
 
-  document.getElementById("Answer").innerHTML = 
-  StartHour + StartMin 
-  + EndHour + EndMin
-  + AMPMStart + AMPMEnd;
+document.getElementById("Answer").innerHTML = TotalEndMin - TotalStartMin
+
 }
+
 </script>
     
     </body> 
