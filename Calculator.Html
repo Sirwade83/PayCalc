@@ -20,14 +20,26 @@
       
     <body> 
     
-<!-- Code example from https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_number_get -->
-          <h3>Enter your work times:</h3>
+<!-- Code example from https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_number_get -->          
+<!-- Added Drop down box https://www.dummies.com/web-design-development/site-development/how-to-create-a-drop-down-list-in-an-html5-form/  -->
+      
+<h3>Enter your work times:</h3>
 
 <input type="number" id="StartHour" max="2">:
-<input type="number" id="StartMinutes" max="2" > - 
+<input type="number" id="StartMinutes" max="2" >
+      
+<select id = "AMPM1">
+   <option value = "1">AM</option>
+   <option value = "12">PM</option>
+</select> - 
 
 <input type="number" id="EndHour" max="2" >:
 <input type="number" id="EndMinutes" max="2" >
+      
+<select id = "AMPM2">
+   <option value = "1">AM</option>
+   <option value = "12">PM</option>
+</select> 
 
 <p>Click the button to calculate</p>
 
@@ -35,6 +47,7 @@
 
 <p id="Answer"></p>
 
+      
 <script>
 function Calculate() {
   var x = document.getElementById("StartHour").value;
