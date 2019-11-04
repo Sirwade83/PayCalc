@@ -10,7 +10,7 @@
 <!-- https://stackoverflow.com/questions/22709792/input-type-number-wont-resize -->
 
         <style>
-        input[type=text]{
+        input[type=input]{
            width: 16px;
            } 
         </style>
@@ -23,7 +23,8 @@
       
 <h3>Enter your work times:</h3>
 
-<input type="text" id="StartHour">:
+<input type="input" id="StartHour">:
+      
 <input type="text" id="StartMinutes">
      
 <select id = "AMPM1">
@@ -49,7 +50,7 @@
 <script>
 function Calculate() {
   var x = document.getElementById("StartHour").value;
-  document.getElementById("Answer").innerHTML = Number('x') + 3;
+  document.getElementById("Answer").innerHTML = x + 3;
 }
 </script>
 
