@@ -98,10 +98,11 @@ var EndMin= +document.getElementById("EndMin").value;
 <!-- https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-  -->
 
 var element = document.getElementById("AMPMStart");
-var AMPMStart = +element.options[element.selectedIndex].value;
+var AMPMStart = parseInt(element.options[element.selectedIndex].value, 10);
 
 var element = document.getElementById("AMPMEnd");
-var AMPMEnd = +element.options[element.selectedIndex].value;
+
+var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
 
   document.getElementById("Answer").innerHTML = 
   StartHour + StartMin 
