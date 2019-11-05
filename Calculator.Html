@@ -77,10 +77,10 @@ function limit(element)
 <script>
 function Calculate() {
 
-var StartHour = parseInt(document.getElementById("StartHour").value, 10);
-var StartMin = parseInt( document.getElementById("StartMin").value , 10);
-var EndHour = parseInt( document.getElementById("EndHour").value, 10);
-var EndMin= parseInt( document.getElementById("EndMin").value , 10);
+var StartHour = +document.getElementById("StartHour").value;
+var StartMin = +document.getElementById("StartMin").value;
+var EndHour = +document.getElementById("EndHour").value;
+var EndMin = +document.getElementById("EndMin").value;
   
   var TotalEndMin = (EndHour * 60) + EndMin;
   var TotalStartMin = (StartHour) * 60) + StartMin;
