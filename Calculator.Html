@@ -66,9 +66,6 @@ function limit(element)
 <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndHour"> :
 <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndMin">
 
-
-<p>Click the button to calculate</p>
-
 <button onclick="Calculate()">Calculate</button>
 
 <p id="Answer"></p>
@@ -104,7 +101,7 @@ var EndMin = +document.getElementById("EndMin").value;
      
       if (NightExtra < 0) { NightExtra = 0 };
       
-     document.getElementById("Answer").innerHTML = "$" + (NightExtra + MorningExtra).toFixed(2);      
+     document.getElementById("Answer").innerHTML = StartHour + StartMin + EndHour + EndMin \\ "$" + (NightExtra + MorningExtra).toFixed(2);      
 }
 </script>
     
