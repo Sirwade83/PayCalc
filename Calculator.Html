@@ -105,28 +105,20 @@ var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
       AddMin= (TotalMin % 15 >= 5) ? 15 - (TotalMin % 15): (TotalMin % 15) * -1;
       TotalMin += AddMin;
   var TotalDollar = ((TotalMin / 60) * 18);
-
-var MorningExtra = 0;
-if (AMPMStart = 0) 
-  {
-  MorningExtra = (8 * 60) - ((StartHour * 60)+ StartMin);
+  
+  var MorningExtra = (8 * 60) - ((StartHour * 60)+ StartMin);
   var MorningExtraMin = (MorningExtra % 15 >= 5) ? 15 - (MorningExtra % 15): (MorningExtra % 15) * -1;
       MorningExtra += MorningExtraMin;
 
       MorningExtra = ((MorningExtra / 60) * 2);
       if (MorningExtra < 0) { MorningExtra = 0 };
-   };
 
-var NightExtra = 0;
-if (AMPMEnd = 12) 
-  {
-  NightExtra = ((EndHour * 60)+ EndMin) - (5 * 60) ;
+  var NightExtra = ((EndHour * 60)+ EndMin) - (5 * 60) ;
   var NightExtraMin = (NightExtra % 15 >= 5) ? 15 - (NightExtra % 15): (NightExtra % 15) * -1;
       NightExtra += NightExtraMin;
 
       NightExtra = ((NightExtra / 60) * 2);
       if (NightExtra < 0) { NightExtra = 0 };
-  };
       
      document.getElementById("Answer").innerHTML = "$" + (NightExtra + MorningExtra).toFixed(2);      
 }
