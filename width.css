@@ -1,8 +1,12 @@
-      <!-- Css solution to width problem -->
-<!-- https://stackoverflow.com/questions/22709792/input-type-number-wont-resize -->
+/* Css solution to width problem 
+https://stackoverflow.com/questions/22709792/input-type-number-wont-resize
 
-        <style>
-        input[type=text]{
-           width: 20px;
-           } 
-        </style>
+To disable Auto zoom
+ https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone */
+
+body {
+  font-size: 20px;
+}
+input[type="text"] {
+  font-size: inherit;
+}
