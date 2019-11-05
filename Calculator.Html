@@ -95,7 +95,6 @@ var EndMin= +document.getElementById("EndMin").value;
       MorningExtra = ((MorningExtra / 60) * 2);
 
       if (MorningExtra < 0) { MorningExtra = 0 };
-      MorningExtra = (parseInt(AMPMStart, 10) = 12) ? 0 : MorningExtra;
 
   var NightExtra = ((EndHour * 60)+ EndMin) - (17 * 60) ;
   var NightExtraMin = (NightExtra % 15 >= 5) ? 15 - (NightExtra % 15): (NightExtra % 15) * -1;
@@ -103,7 +102,6 @@ var EndMin= +document.getElementById("EndMin").value;
       NightExtra = ((NightExtra / 60) * 2);
      
       if (NightExtra < 0) { NightExtra = 0 };
-      NightExtra = (parseInt(AMPMEnd, 10) = 0) ? 0 : NightExtra;
       
      document.getElementById("Answer").innerHTML = "$" + (NightExtra + MorningExtra).toFixed(2);      
 }
