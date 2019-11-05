@@ -1,10 +1,9 @@
 # PayCalc
 Work pay calculator for my wife's job
 
-<h1> Try me out: </h1>
+Try me out: 
 http://htmlpreview.github.io/?https://github.com/Sirwade83/PayCalc/blob/master/Calculator.Html
-<br>
-<br>
+
 Css solution to width problem:
 https://stackoverflow.com/questions/22709792/input-type-number-wont-resize
 
