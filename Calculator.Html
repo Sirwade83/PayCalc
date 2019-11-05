@@ -108,10 +108,17 @@ var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
   TotalMin += AddMin;
   var TotalDollar = ((TotalMin / 60) * 18)
 
-  // if (TotalDollar < 18) { TotalDollar = 18};
+  if (TotalDollar < 18) { 
+     if (TotalDollar <= 0) {
+        document.getElementById("Answer").innerHTML = "ERROR Check the times!";
+        goto end;
+        } else {
+          TotalDollar = 18;
+          }
+  };
 
 document.getElementById("Answer").innerHTML = "$" + TotalDollar.toFixed(2);
-
+[lbl] end:
 }
 </script>
     
