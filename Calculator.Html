@@ -114,10 +114,14 @@ var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
       if (MorningExtra < 0) { MorningExtra = 0 };
 
   var NightExtra = ((EndHour * 60)+ EndMin) - (5 * 60) ;
+      window.alert("NightExtra Is:" + NightExtra);
   var NightExtraMin = (NightExtra % 15 >= 5) ? 15 - (NightExtra % 15): (NightExtra % 15) * -1;
+      window.alert("NightExtraMin Is:" + NightExtraMin);
       NightExtra += NightExtraMin;
+      window.alert("NightExtra Is:" + NightExtra);
 
       NightExtra = ((NightExtra / 60) * 2);
+      window.alert("NightExtra Is:" + NightExtra);
       if (NightExtra < 0) { NightExtra = 0 };
       
      document.getElementById("Answer").innerHTML = "$" + (NightExtra + MorningExtra).toFixed(2);      
