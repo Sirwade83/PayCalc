@@ -115,7 +115,7 @@ if (AMPMStart = 0)
 
       MorningExtra = ((MorningExtra / 60) * 2);
       if (MorningExtra < 0) { MorningExtra = 0 };
-   }
+   };
 
 var NightExtra = 0;
 if (AMPMEnd = 12) 
@@ -126,7 +126,7 @@ if (AMPMEnd = 12)
 
       NightExtra = ((NightExtra / 60) * 2);
       if (NightExtra < 0) { NightExtra = 0 };
-  }
+  };
       
      document.getElementById("Answer").innerHTML = "$" + (NightExtra + MorningExtra).toFixed(2);      
 }
