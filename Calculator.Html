@@ -61,22 +61,11 @@ function limit(element)
 <h3>Enter your work times:</h3>
 
 <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartHour"> :
-<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartMin">
-
-     
-<select id = "AMPMStart">
-   <option value = 0>AM</option>
-   <option value = 12>PM</option>
-</select> - 
+<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartMin"> - 
 
 <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndHour"> :
 <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndMin">
 
-       
-<select id = "AMPMEnd">
-   <option value = 0>AM</option>
-   <option value = 12>PM</option>
-</select> 
 
 <p>Click the button to calculate</p>
 
@@ -91,15 +80,9 @@ var StartHour = +document.getElementById("StartHour").value;
 var StartMin = +document.getElementById("StartMin").value;
 var EndHour = +document.getElementById("EndHour").value;
 var EndMin= +document.getElementById("EndMin").value;
-<!-- help with drop down getting values -->
-<!-- https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-  -->
-var element = document.getElementById("AMPMStart");
-var AMPMStart = parseInt(element.options[element.selectedIndex].value, 10);
-var element = document.getElementById("AMPMEnd");
-var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
   
-  var TotalEndMin = ((EndHour + AMPMEnd) * 60) + EndMin;
-  var TotalStartMin = ((StartHour + AMPMStart) * 60) + StartMin;
+  var TotalEndMin = (EndHour * 60) + EndMin;
+  var TotalStartMin = (StartHour) * 60) + StartMin;
   var TotalMin = TotalEndMin - TotalStartMin
   var AddMin= 0;
       AddMin= (TotalMin % 15 >= 5) ? 15 - (TotalMin % 15): (TotalMin % 15) * -1;
@@ -114,7 +97,7 @@ var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
       if (MorningExtra < 0) { MorningExtra = 0 };
       MorningExtra = (parseInt(AMPMStart, 10) = 12) ? 0 : MorningExtra;
 
-  var NightExtra = ((EndHour * 60)+ EndMin) - (5 * 60) ;
+  var NightExtra = ((EndHour * 60)+ EndMin) - (17 * 60) ;
   var NightExtraMin = (NightExtra % 15 >= 5) ? 15 - (NightExtra % 15): (NightExtra % 15) * -1;
       NightExtra += NightExtraMin;
       NightExtra = ((NightExtra / 60) * 2);
