@@ -109,16 +109,18 @@ var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
   var MorningExtra = (8 * 60) - ((StartHour * 60)+ StartMin);
   var MorningExtraMin = (MorningExtra % 15 >= 5) ? 15 - (MorningExtra % 15): (MorningExtra % 15) * -1;
       MorningExtra += MorningExtraMin;
-
       MorningExtra = ((MorningExtra / 60) * 2);
+
       if (MorningExtra < 0) { MorningExtra = 0 };
+      MorningExtra = (AMPMStart = 12) ? 0 : MorningExtra;
 
   var NightExtra = ((EndHour * 60)+ EndMin) - (5 * 60) ;
   var NightExtraMin = (NightExtra % 15 >= 5) ? 15 - (NightExtra % 15): (NightExtra % 15) * -1;
       NightExtra += NightExtraMin;
-
       NightExtra = ((NightExtra / 60) * 2);
+     
       if (NightExtra < 0) { NightExtra = 0 };
+      NightExtra = (AMPMEnd = 0) ? 0 : NightExtra;
       
      document.getElementById("Answer").innerHTML = "$" + (NightExtra + MorningExtra).toFixed(2);      
 }
