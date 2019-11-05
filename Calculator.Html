@@ -113,7 +113,7 @@ var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
       MorningExtra = ((MorningExtra / 60) * 2);
       if (MorningExtra < 0) { MorningExtra = 0 };
 
-  var NightExtra = (5 * 60) - ((EndHour * 60)+ EndMin);
+  var NightExtra = ((EndHour * 60)+ EndMin) - (5 * 60) ;
   var NightExtraMin = (NightExtra % 15 >= 5) ? 15 - (NightExtra % 15): (NightExtra % 15) * -1;
       NightExtraMin += NightExtraMin;
 
