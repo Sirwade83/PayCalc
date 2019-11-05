@@ -111,6 +111,7 @@ var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
       MorningExtra += MorningExtraMin;
 
       MorningExtra = ((MorningExtra / 60) * 2);
+      if MorningExtra < 0 then MorningExtra = 0;
 
 document.getElementById("Answer").innerHTML = "$" + MorningExtra.toFixed(2);
 }
