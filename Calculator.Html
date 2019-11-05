@@ -6,10 +6,18 @@
         <title> 
               CommGap Pay Calculator
         </title> 
-      <link href="width.css" rel="stylesheet" type="text/css">
+      <!-- Css solution to width problem -->
+<!-- https://stackoverflow.com/questions/22709792/input-type-number-wont-resize -->
+
+        <style>
+        input[type=text]{
+           width: 20px;
+           } 
+        </style>
 
 <!--Make full screen code from: -->
 <!-- https://www.w3schools.com/css/css_rwd_viewport.asp -->
+
 <!-- https://stackoverflow.com/questions/6483425/prevent-iphone-from-zooming-in-on-select-in-web-app -->
 
 <meta name="viewport" 
@@ -17,6 +25,18 @@ content="width=device-width,
  minimum-scale=1.0, 
 maximum-scale=1.0, 
 user-scalable=no">
+
+
+<!-- To disable Auto zoom -->
+<!-- https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone -->
+<style>
+body {
+  font-size: 16px;
+}
+input[type="text"] {
+  font-size: inherit;
+}
+</style>
 
     </head>
 
@@ -29,7 +49,6 @@ user-scalable=no">
 function limit(element)
 {
     var max_chars = 2;
-
     if(element.value.length > max_chars) {
         element.value = element.value.substr(0, max_chars);
     }
@@ -72,15 +91,11 @@ var StartHour = +document.getElementById("StartHour").value;
 var StartMin = +document.getElementById("StartMin").value;
 var EndHour = +document.getElementById("EndHour").value;
 var EndMin= +document.getElementById("EndMin").value;
-
 <!-- help with drop down getting values -->
 <!-- https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-  -->
-
 var element = document.getElementById("AMPMStart");
 var AMPMStart = parseInt(element.options[element.selectedIndex].value, 10);
-
 var element = document.getElementById("AMPMEnd");
-
 var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
   
   var TotalEndMin = ((EndHour + AMPMEnd) * 60) + EndMin;
@@ -91,9 +106,7 @@ var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
   TotalMin += AddMin;
   var TotalDollar = ((TotalMin / 60) * 18)
 document.getElementById("Answer").innerHTML = "$" + TotalDollar.toFixed(2);
-
 }
-
 </script>
     
     </body> 
