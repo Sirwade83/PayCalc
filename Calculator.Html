@@ -119,10 +119,8 @@ var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
 
       NightExtra = ((NightExtra / 60) * 2);
       if (NightExtra < 0) { NightExtra = 0 };
-  
-  var TotalPay = (NightExtra = 0) ? "© 2019 Wade The White Shadow All Rights Reserved" : "$" + NightExtra.toFixed(2);
       
-     document.getElementById("Answer").innerHTML = TotalPay + MorningExtra;      
+     document.getElementById("Answer").innerHTML = "$" + (NightExtra + MorningExtra).toFixed(2);      
 }
 </script>
     
