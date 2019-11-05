@@ -1,6 +1,10 @@
 # PayCalc
 Work pay calculator for my wife's job
 
+$18 per hour in 15 min increments.
+If it's 5 mins past 15 it rounds up
+Min amount is 18.
+
 Try me out: 
 http://htmlpreview.github.io/?https://github.com/Sirwade83/PayCalc/blob/master/Calculator.Html
 
