@@ -114,15 +114,7 @@ var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
 
   if (TotalDollar > 0 && TotalDollar < 18) { TotalDollar = 18 };
 
-  if (StartHour >= 5 && EndHour >=5 && TotalDollar != 0 && AMPMStart = 12 && AMPMEnd = 12){
-     TotalDollar = ((TotalDollar / 18) * 20); 
-     };
-
-  if (StartHour <= 8 && EndHour <=8 && TotalDollar != 0 && AMPMStart = 0 && AMPMEnd = 0){
-     TotalDollar = ((TotalDollar / 18) * 20);
-     };
-
-document.getElementById("Answer").innerHTML = (TotalMin <= 0) ? "ERROR Check the times": "$" + TotalDollar.toFixed(2);
+  Pdocument.getElementById("Answer").innerHTML = (TotalMin <= 0) ? "ERROR Check the times": "$" + TotalDollar.toFixed(2);
 }
 </script>
     
