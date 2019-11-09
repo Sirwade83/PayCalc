@@ -6,7 +6,7 @@ If it's 5 mins past 15 it rounds up
 Min amount is 18.
 
 Try me out: 
-http://htmlpreview.github.io/?https://github.com/WadeTheWhiteShadow/PayCalc/blob/master/Calculator.Html
+http://htmlpreview.github.io/?https://github.com/ZWhiteShadow/PayCalc/blob/master/Calculator.Html
 
 Css solution to width problem:
 https://stackoverflow.com/questions/22709792/input-type-number-wont-resize
