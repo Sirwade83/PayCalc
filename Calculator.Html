@@ -105,7 +105,7 @@ var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
   {
   var TotalEndMin = ((EndHour) * 60) + EndMin;
   }
-  else if (EndHour == 12 && AMPMEnd == 0 ) //Add 12 if it Equals Midnight!
+  else if (EndHour == 12 && AMPMEnd == 0) //Add 12 if it Equals Midnight!
   {
   var TotalEndMin = ((EndHour + 12) * 60) + EndMin;
   }
@@ -129,7 +129,14 @@ var NightExtra = 0;
 
 if (AMPMStart == 0) 
   {
-  MorningExtra =  (8 * 60) - ((StartHour * 60) + StartMin) ;
+  
+  if (AMPMEnd == 0 && EndHour >= 8){
+     MorningExtra =  (8 * 60) - ((StartHour * 60) + StartMin);
+  }
+  else {
+    MorningExtra =  ( (EndHour -StartHour) * 60) + StartMin; 
+  }
+  
   var MorningExtraMin = (MorningExtra % 15 >= 5) ? 15 - (MorningExtra % 15): (MorningExtra % 15) * -1;
       MorningExtra += MorningExtraMin;
       MorningExtra = ((MorningExtra / 60) * 2);
@@ -139,17 +146,25 @@ if (AMPMStart == 0)
  
 if (AMPMEnd == 12 && EndHour != 12) // PM but not 12 PM 
   {
-  NightExtra = ((EndHour * 60)+ EndMin) - (5  * 60);
+  
+  if (AMPMStart == 12 && StartHour > 5){
+      NightExtra = ( (EndHour - StartHour) * 60) + StartMin;
+  }
+  else {
+      NightExtra = ((EndHour * 60)+ EndMin) - (5  * 60);
+  }
+  
   var NightExtraMin = (NightExtra % 15 >= 5) ? 15 - (NightExtra % 15): (NightExtra % 15) * -1;
       NightExtra += NightExtraMin;
       NightExtra = ((NightExtra / 60) * 2);
       if (NightExtra < 0) { NightExtra = 0 };
   }
   
-  //TotalDollar = TotalDollar + " Morning " + MorningExtra + " Night " + NightExtra; // Add Morning and Night extra Minutes
+ //TotalDollar = TotalDollar  + MorningExtra + NightExtra; // Add Morning and Night extra Minutes
 
-document.getElementById("Answer").innerHTML = //(TotalDollar < 0) ? "ERROR Check the times": 
-TotalDollar/18 + " Morning " + MorningExtra + " Night " + NightExtra //"$" + TotalDollar.toFixed(2);
+document.getElementById("Answer").innerHTML = // (TotalDollar < 0) ? "ERROR Check the times": 
+"(Regular Hours " + TotalDollar / 18  +") (Morning Hours " + MorningExtra / 2 + ") (Night Hours " + NightExtra / 2 + ")"; //-- Used To test 
+//"$" + TotalDollar.toFixed(2);
 
 }
 </script>
