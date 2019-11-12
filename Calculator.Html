@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html> 
   
 <html> 
@@ -12,7 +10,7 @@
 
         <style>
         input[type=text]{
-           width: 20px;
+           width: 26px;
            } 
         </style>
 
@@ -103,15 +101,56 @@ var AMPMStart = parseInt(element.options[element.selectedIndex].value, 10);
 var element = document.getElementById("AMPMEnd");
 var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
   
+  if (EndHour == 12 && AMPMEnd == 12 ) //Don't add 12 if it Equals 12 PM Noon!
+  {
+  var TotalEndMin = ((EndHour) * 60) + EndMin;
+  }
+  else if (EndHour == 12 && AMPMEnd == 0 ) //Add 12 if it Equals Midnight!
+  {
+  var TotalEndMin = ((EndHour + 12) * 60) + EndMin;
+  }
+  else
+  {
   var TotalEndMin = ((EndHour + AMPMEnd) * 60) + EndMin;
+  }
+  
+  
   var TotalStartMin = ((StartHour + AMPMStart) * 60) + StartMin;
   var TotalMin = TotalEndMin - TotalStartMin
   var AddMin= 0;
   var AddMin= (TotalMin % 15 >= 5) ? 15 - (TotalMin % 15): (TotalMin % 15) * -1;
   TotalMin += AddMin;
   var TotalDollar = ((TotalMin / 60) * 18)
-  if (TotalDollar > 0 && TotalDollar < 18) { TotalDollar = 18 };
-document.getElementById("Answer").innerHTML = (TotalMin <= 0) ? "ERROR Check the times": "$" + TotalDollar.toFixed(2);
+  if (TotalDollar >= 0 && TotalDollar < 18) { TotalDollar = 18 };
+  
+var MorningExtra = 0;
+var NightExtra = 0;
+
+
+if (AMPMStart == 0) 
+  {
+  MorningExtra =  (8 * 60) - ((StartHour * 60) + StartMin) ;
+  var MorningExtraMin = (MorningExtra % 15 >= 5) ? 15 - (MorningExtra % 15): (MorningExtra % 15) * -1;
+      MorningExtra += MorningExtraMin;
+      MorningExtra = ((MorningExtra / 60) * 2);
+      if (MorningExtra < 0) { MorningEtra = 0 };
+   }
+
+ 
+if (AMPMEnd == 12 && EndHour != 12) // PM but not 12 PM 
+  {
+  NightExtra = ((EndHour * 60)+ EndMin) - (5  * 60);
+  var NightExtraMin = (NightExtra % 15 >= 5) ? 15 - (NightExtra % 15): (NightExtra % 15) * -1;
+      NightExtra += NightExtraMin;
+      NightExtra = ((NightExtra / 60) * 2);
+      if (NightExtra < 0) { NightExtra = 0 };
+  }
+  
+  //TotalDollar = TotalDollar + " Morning " + MorningExtra + " Night " + NightExtra; // Add Morning and Night extra Minutes
+
+document.getElementById("Answer").innerHTML = //(TotalDollar < 0) ? "ERROR Check the times": 
+TotalDollar/18 + " Morning " + MorningExtra + " Night " + NightExtra //"$" + TotalDollar.toFixed(2);
+
 }
 </script>
     
