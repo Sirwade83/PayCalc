@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html> 
   
 <html> 
@@ -12,8 +10,31 @@
 
         <style>
         input[type=text]{
-           width: 20px;
+           width: 26px;
            } 
+           
+/* https://teamtreehouse.com/community/removing-dropdown-arrows-other-issues */        
+           select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+
+select::-ms-expand {
+    display: none;
+}
+
+/* End of dropdown coppy */
+
+/* https://stackoverflow.com/questions/5126396/border-around-drop-down-list */
+select {
+    outline: none;
+    border: none;
+}
+/* End Help */
+
         </style>
 
 <!--Make full screen code from: -->
@@ -61,18 +82,90 @@ function limit(element)
       
 <h3>Enter your work times:</h3>
 
-<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartHour"> :
-<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartMin">
+<select id = "StartHour">
+   <option value = 1>1</option>
+   <option value = 2>2</option>
+   <option value = 3>3</option>
+   <option value = 4>4</option>
+   <option value = 5>5</option>
+   <option value = 6>6</option>
+   <option value = 7>7</option>
+   <option value = 8 selected>8</option>
+   <option value = 9>9</option>
+   <option value = 10>10</option>
+   <option value = 11>11</option>
+   <option value = 12>12</option>
+</select>:
 
+<!--  <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartHour"> :Old Code -->
+<select id = "StartMin1">
+   <option value = 0>0</option>
+   <option value = 1>1</option>
+   <option value = 2>2</option>
+   <option value = 3>3</option>
+   <option value = 4>4</option>
+   <option value = 5>5</option>
+</select> 
+
+<select id = "StartMin2">
+   <option value = 0>0</option>
+   <option value = 1>1</option>
+   <option value = 2>2</option>
+   <option value = 3>3</option>
+   <option value = 4>4</option>
+   <option value = 5>5</option>
+   <option value = 6>6</option>
+   <option value = 7>7</option>
+   <option value = 8>8</option>
+   <option value = 9>9</option>
+</select> 
+
+<!--<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartMin"> Old Code-->
      
 <select id = "AMPMStart">
    <option value = 0>AM</option>
    <option value = 12>PM</option>
 </select> - 
 
-<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndHour"> :
-<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndMin">
+<select id = "EndHour">
+   <option value = 1>1</option>
+   <option value = 2>2</option>
+   <option value = 3>3</option>
+   <option value = 4>4</option>
+   <option value = 5>5</option>
+   <option value = 6>6</option>
+   <option value = 7>7</option>
+   <option value = 8 selected >8</option>
+   <option value = 9>9</option>
+   <option value = 10>10</option>
+   <option value = 11>11</option>
+   <option value = 12>12</option>
+</select>: 
 
+<!-- <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndHour"> Old Code-->
+<!-- <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndMin"> Old Code -->
+
+<select id = "EndMin1">
+   <option value = 0>0</option>
+   <option value = 1>1</option>
+   <option value = 2>2</option>
+   <option value = 3>3</option>
+   <option value = 4>4</option>
+   <option value = 5>5</option>
+</select> 
+
+<select id = "EndMin2">
+   <option value = 0>0</option>
+   <option value = 1>1</option>
+   <option value = 2>2</option>
+   <option value = 3>3</option>
+   <option value = 4>4</option>
+   <option value = 5>5</option>
+   <option value = 6>6</option>
+   <option value = 7>7</option>
+   <option value = 8>8</option>
+   <option value = 9>9</option>
+</select> 
        
 <select id = "AMPMEnd">
    <option value = 0>AM</option>
@@ -92,26 +185,84 @@ onClick="document.location.reload(true)">
       
 <script>
 function Calculate() {
-var StartHour = +document.getElementById("StartHour").value;
-var StartMin = +document.getElementById("StartMin").value;
-var EndHour = +document.getElementById("EndHour").value;
-var EndMin= +document.getElementById("EndMin").value;
+
+// Old Code:
+//var StartHour = +document.getElementById("StartHour").value; 
+//var StartMin = +document.getElementById("StartMin").value;
+//var EndHour = +document.getElementById("EndHour").value; 
+//var EndMin= +document.getElementById("EndMin").value;
+
 <!-- help with drop down getting values -->
 <!-- https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-  -->
+
+var element = document.getElementById("StartHour");
+var StartHour = parseInt(element.options[element.selectedIndex].value, 10);
+
+var element = document.getElementById("EndHour");
+var EndHour = parseInt(element.options[element.selectedIndex].value, 10);
+
+var element = document.getElementById("StartMin1");
+var StartMin1 = parseInt(element.options[element.selectedIndex].value, 10);
+var element = document.getElementById("StartMin2");
+var StartMin2 = parseInt(element.options[element.selectedIndex].value, 10);
+
+var element = document.getElementById("EndMin1");
+var EndMin1 = parseInt(element.options[element.selectedIndex].value, 10);
+var element = document.getElementById("EndMin2");
+var EndMin2 = parseInt(element.options[element.selectedIndex].value, 10);
+
 var element = document.getElementById("AMPMStart");
 var AMPMStart = parseInt(element.options[element.selectedIndex].value, 10);
 var element = document.getElementById("AMPMEnd");
 var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
+
+var StartMin = (StartMin1 * 10) + StartMin2;
+var EndMin = (EndMin1 * 10) + EndMin2;
+var RealEndHour = EndHour; // Save Ending Hour before adding 12 
+    
+  if (EndHour == 12 && AMPMEnd == 12) { EndHour = 12; };
+    if ( AMPMStart == 0 && AMPMEnd == 12 & EndHour != 12) { EndHour +=12;}; // If AM To PM Add 12 unless it is Noon
   
-  var TotalEndMin = ((EndHour + AMPMEnd) * 60) + EndMin;
-  var TotalStartMin = ((StartHour + AMPMStart) * 60) + StartMin;
+  var TotalEndMin = (EndHour * 60) + EndMin;
+  var TotalStartMin = (StartHour * 60) + StartMin;
   var TotalMin = TotalEndMin - TotalStartMin
+  if (TotalMin < 60 && TotalMin > 0) {TotalMin = 60} // Set Min Dollars to $18
+  
   var AddMin= 0;
-  var AddMin= (TotalMin % 15 >= 5) ? 15 - (TotalMin % 15): (TotalMin % 15) * -1;
+  var AddMin= (TotalMin % 15 >= 5) ? 15 - (TotalMin % 15): (TotalMin % 15) * -1; //Round to the nearest 15
   TotalMin += AddMin;
-  var TotalDollar = ((TotalMin / 60) * 18)
-  if (TotalDollar > 0 && TotalDollar < 18) { TotalDollar = 18 };
-document.getElementById("Answer").innerHTML = (TotalMin <= 0) ? "ERROR Check the times": "$" + TotalDollar.toFixed(2);
+  
+  var TotalDollar = ((TotalMin / 60) * 18) // $18 dollars and hour
+  
+var MorningExtra = 0;
+var NightExtra = 0;
+
+  if ( StartHour <= 8 && AMPMStart == 0 ) { MorningExtra =  (8 * 60) - ((StartHour * 60) + StartMin); }; // Only the part Before 8 AM is $20
+    if (StartHour <= 8 && EndHour <=  8 && AMPMStart == 0 && AMPMEnd == 0 ) {MorningExtra = (TotalDollar / 18) *60; }; // if bolth times are before 8 AM - $20 for the full time
+     
+  var MorningExtraMin = (MorningExtra % 15 >= 5) ? 15 - (MorningExtra % 15): (MorningExtra % 15) * -1; // Round to the nearest 15
+      MorningExtra += MorningExtraMin;
+      MorningExtra = ((MorningExtra / 60) * 2);
+      //if (MorningExtra < 0) { MorningExtra = 0 };
+
+    if (RealEndHour >= 5 && AMPMEnd == 12) { NightExtra = (EndHour * 60) - (5 * 60) + StartMin; }; // Only the part After 5 PM is $20 
+    
+    if(EndHour <= 5 && StartHour <= 5 && AMPMStart == 12 && AMPMEnd == 12){ NightExtra = (TotalDollar / 18) *60 } // If bolth times are after 5 Pm then the full time is $20
+    
+  var NightExtraMin = (NightExtra % 15 >= 5) ? 15 - (NightExtra % 15): (NightExtra % 15) * -1;
+      NightExtra += NightExtraMin;
+      NightExtra = ((NightExtra / 60) * 2);
+     // if (NightExtra < 0) { NightExtra = 0 };
+  
+ //TotalDollar = TotalDollar  + MorningExtra + NightExtra; // Add Morning and Night extra Minutes
+ 
+  if ( AMPMStart == 12 && AMPMEnd == 0) { TotalDollar = 0;}; // If PM To AM Show Error:
+  
+// If no money, after 10 PM, before 6 AM shows an error! 
+document.getElementById("Answer").innerHTML =  ((TotalDollar <= 0) || ( (TotalEndMin / 60) > 10 && AMPMEnd == 12 ) || (StartHour < 6 && AMPMEnd == 0) ) ? "ERROR Check the times": 
+//"(Regular Hours " + TotalDollar / 18  +") (Morning Hours " + MorningExtra / 2 + ") (Night Hours " + NightExtra / 2 + ")"; //-- Used To test 
+"$" + TotalDollar.toFixed(2);
+
 }
 </script>
     
