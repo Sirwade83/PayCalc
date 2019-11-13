@@ -86,6 +86,7 @@ function limit(element)
 onClick="document.location.reload(true)">
 
 <p id="Answer"></p>
+<p id="DollarAmount"> </p>
 
       
 <script>
@@ -131,7 +132,7 @@ var NightExtra = 0;
       MorningExtra = ((MorningExtra / 60) * 2);
       if (MorningExtra < 0) { MorningExtra = 0 };
 
-    if (RealEndHour >= 5 && AMPMEnd == 12) { NightExtra = (RealEndHour * 60) - (5 * 60) + EndMin; }; // Only the part After 5 PM is $20 
+    if (RealEndHour >= 5 && AMPMEnd == 12 & RealEndHour != 12) { NightExtra = (RealEndHour * 60) - (5 * 60) + EndMin; }; // Only the part After 5 PM is $20 
     
     if(EndHour >= 5 && StartHour >= 5 && AMPMStart == 12 && AMPMEnd == 12 & StartHour != 12){ NightExtra = (TotalDollar / 18) *60 } // If bolth times are after 5 Pm then the full time is $20
     
@@ -139,15 +140,15 @@ var NightExtra = 0;
       NightExtra += NightExtraMin;
       NightExtra = ((NightExtra / 60) * 2);
       if (NightExtra < 0) { NightExtra = 0 };
-  
- TotalDollar = TotalDollar  + MorningExtra + NightExtra; // Add Morning and Night extra Minutes
  
   if ( AMPMStart == 12 && AMPMEnd == 0) { TotalDollar = 0;}; // If PM To AM Show Error:
-  
+
+TotalDollar = TotalDollar  + MorningExtra + NightExtra; // Add Morning and Night extra Minues
+
 // If no money, Not a number, after 10 PM, before 6 AM shows an error! 
-document.getElementById("Answer").innerHTML = ((TotalDollar <= 0) || ( (TotalEndMin / 60) > 10 && AMPMEnd == 12 ) || (StartHour < 6 && AMPMEnd == 0) || (TotalDollar != TotalDollar) || ( (StartHour < 0) || (StartHour > 12) || Number.isInteger(StartHour) == false|| Number.isInteger(RealEndHour < 0) == false || (RealEndHour > 12) || ((RealEndHour) ) || (StartMin < 0) || (StartMin > 59) || (EndMin < 0) || (EndMin > 59) || Number.isInteger(EndMin) ) ) ? "ERROR Check the times": 
-//"(Regular Hours " + TotalDollar / 18  +") (Morning Hours " + MorningExtra / 2 + ") (Night Hours " + NightExtra / 2 + ")"; //-- Used To test 
-"$" + TotalDollar.toFixed(2);
+document.getElementById("Answer").innerHTML = ((TotalDollar <= 0) ||  (RealEndHour  > 9 && AMPMEnd == 12 && RealEndHour != 12) || (StartHour < 6 && AMPMEnd == 0) || (TotalDollar != TotalDollar) ||  (StartHour < 0) || (StartHour > 12) || (Number.isInteger(StartHour) == false) || (RealEndHour < 0) || (RealEndHour > 12) || (Number.isInteger(RealEndHour) == false ) || (StartMin < 0) || (StartMin > 59) || (Number.isInteger(StartMin) == false ) || (EndMin < 0) || (EndMin > 59) || (Number.isInteger(EndMin) == false) ) ? "ERROR Check the times": 
+//"(Regular Hours " + (TotalDollar / 18)  +") (Morning Hours " + MorningExtra / 2 + ") (Night Hours " + NightExtra / 2 + ")"; //-- Used To test 
+ TotalDollar.toFixed(2);
 
 }
 </script>
