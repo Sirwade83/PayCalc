@@ -218,48 +218,50 @@ var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
 
 var StartMin = (StartMin1 * 10) + StartMin2;
 var EndMin = (EndMin1 * 10) + EndMin2;
-
- if ( ( ( (AMPMStart == 0) && (AMPMEnd == 12) ) || ( (AMPMStart == 12) && (AMPMEnd == 0) ) ) && EndHour != 12 ) {
-       EndHour += 12;
-       alert(EndHour);
-   };
-  
-    if ( EndHour == 12 && AMPMEnd == 0 && StartHour != 12) {EndHour = 24; };
+var RealEndHour = EndHour; // Save Ending Hour before adding 12 
+    
   if (EndHour == 12 && AMPMEnd == 12) { EndHour = 12; };
+    if ( AMPMStart == 0 && AMPMEnd == 12 & EndHour != 12) { EndHour +=12;}; // If AM To PM Add 12 unless it is Noon
   
   var TotalEndMin = (EndHour * 60) + EndMin;
   var TotalStartMin = (StartHour * 60) + StartMin;
   var TotalMin = TotalEndMin - TotalStartMin
+  if (TotalMin < 60 && TotalMin > 0) {TotalMin = 60} // Set Min Dollars to $18
   
   var AddMin= 0;
-  var AddMin= (TotalMin % 15 >= 5) ? 15 - (TotalMin % 15): (TotalMin % 15) * -1;
+  var AddMin= (TotalMin % 15 >= 5) ? 15 - (TotalMin % 15): (TotalMin % 15) * -1; //Round to the nearest 15
   TotalMin += AddMin;
   
-  var TotalDollar = ((TotalMin / 60) * 18)
-  if (TotalDollar > 0 && TotalDollar < 18) { TotalDollar = 18 };
+  var TotalDollar = ((TotalMin / 60) * 18) // $18 dollars and hour
   
 var MorningExtra = 0;
 var NightExtra = 0;
 
-  MorningExtra =  (8 * 60) - ((StartHour * 60) + StartMin);
+  if ( StartHour <= 8 && AMPMStart == 0 ) { MorningExtra =  (8 * 60) - ((StartHour * 60) + StartMin); }; // Only the part Before 8 AM is $20
+    if (StartHour <= 8 && EndHour <=  8 && AMPMStart == 0 && AMPMEnd == 0 ) {MorningExtra = (TotalDollar / 18) *60; }; // if bolth times are before 8 AM - $20 for the full time
      
-  var MorningExtraMin = (MorningExtra % 15 >= 5) ? 15 - (MorningExtra % 15): (MorningExtra % 15) * -1;
+  var MorningExtraMin = (MorningExtra % 15 >= 5) ? 15 - (MorningExtra % 15): (MorningExtra % 15) * -1; // Round to the nearest 15
       MorningExtra += MorningExtraMin;
       MorningExtra = ((MorningExtra / 60) * 2);
       //if (MorningExtra < 0) { MorningExtra = 0 };
 
-   NightExtra = ((EndHour * 60)+ EndMin) - (5  * 60);
-  
+    if (RealEndHour >= 5 && AMPMEnd == 12) { NightExtra = (EndHour * 60) - (5 * 60) + StartMin; }; // Only the part After 5 PM is $20 
+    
+    if(EndHour <= 5 && StartHour <= 5 && AMPMStart == 12 && AMPMEnd == 12){ NightExtra = (TotalDollar / 18) *60 } // If bolth times are after 5 Pm then the full time is $20
+    
   var NightExtraMin = (NightExtra % 15 >= 5) ? 15 - (NightExtra % 15): (NightExtra % 15) * -1;
       NightExtra += NightExtraMin;
       NightExtra = ((NightExtra / 60) * 2);
      // if (NightExtra < 0) { NightExtra = 0 };
   
  //TotalDollar = TotalDollar  + MorningExtra + NightExtra; // Add Morning and Night extra Minutes
-
-document.getElementById("Answer").innerHTML = // (TotalDollar < 0) ? "ERROR Check the times": 
-"(Regular Hours " + TotalDollar / 18  +") (Morning Hours " + MorningExtra / 2 + ") (Night Hours " + NightExtra / 2 + ")"; //-- Used To test 
-//"$" + TotalDollar.toFixed(2);
+ 
+  if ( AMPMStart == 12 && AMPMEnd == 0) { TotalDollar = 0;}; // If PM To AM Show Error:
+  
+// If no money, after 10 PM, before 6 AM shows an error! 
+document.getElementById("Answer").innerHTML =  ((TotalDollar <= 0) || ( (TotalEndMin / 60) > 10 && AMPMEnd == 12 ) || (StartHour < 6 && AMPMEnd == 0) ) ? "ERROR Check the times": 
+//"(Regular Hours " + TotalDollar / 18  +") (Morning Hours " + MorningExtra / 2 + ") (Night Hours " + NightExtra / 2 + ")"; //-- Used To test 
+"$" + TotalDollar.toFixed(2);
 
 }
 </script>
