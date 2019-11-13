@@ -12,6 +12,29 @@
         input[type=text]{
            width: 26px;
            } 
+           
+/* https://teamtreehouse.com/community/removing-dropdown-arrows-other-issues */        
+           select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+
+select::-ms-expand {
+    display: none;
+}
+
+/* End of dropdown coppy */
+
+/* https://stackoverflow.com/questions/5126396/border-around-drop-down-list */
+select {
+    outline: none;
+    border: none;
+}
+/* End Help */
+
         </style>
 
 <!--Make full screen code from: -->
@@ -59,18 +82,98 @@ function limit(element)
       
 <h3>Enter your work times:</h3>
 
-<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartHour"> :
-<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartMin">
+<select id = "StartHour">
+   <option value = 1>1</option>
+   <option value = 2>2</option>
+   <option value = 3>3</option>
+   <option value = 4>4</option>
+   <option value = 5>5</option>
+   <option value = 6>6</option>
+   <option value = 7>7</option>
+   <option value = 8 selected>8</option>
+   <option value = 9>9</option>
+   <option value = 10>10</option>
+   <option value = 11>11</option>
+   <option value = 12>12</option>
+</select>:
 
+<!--  <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartHour"> :Old Code -->
+<select id = "StartMin1">
+   <option value = 0>0</option>
+   <option value = 1>1</option>
+   <option value = 2>2</option>
+   <option value = 3>3</option>
+   <option value = 4>4</option>
+   <option value = 5>5</option>
+   <option value = 6>6</option>
+   <option value = 7>7</option>
+   <option value = 8>8</option>
+   <option value = 9>9</option>
+</select> 
+
+<select id = "StartMin2">
+   <option value = 0>0</option>
+   <option value = 1>1</option>
+   <option value = 2>2</option>
+   <option value = 3>3</option>
+   <option value = 4>4</option>
+   <option value = 5>5</option>
+   <option value = 6>6</option>
+   <option value = 7>7</option>
+   <option value = 8>8</option>
+   <option value = 9>9</option>
+</select> 
+
+<!--<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartMin"> Old Code-->
      
 <select id = "AMPMStart">
    <option value = 0>AM</option>
    <option value = 12>PM</option>
 </select> - 
 
-<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndHour"> :
-<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndMin">
+<select id = "EndHour">
+   <option value = 1>1</option>
+   <option value = 2>2</option>
+   <option value = 3>3</option>
+   <option value = 4>4</option>
+   <option value = 5>5</option>
+   <option value = 6>6</option>
+   <option value = 7>7</option>
+   <option value = 8 selected >8</option>
+   <option value = 9>9</option>
+   <option value = 10>10</option>
+   <option value = 11>11</option>
+   <option value = 12>12</option>
+</select>: 
 
+<!-- <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndHour"> Old Code-->
+<!-- <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndMin"> Old Code -->
+
+<select id = "EndMin1">
+   <option value = "">0</option>
+   <option value = 1>1</option>
+   <option value = 2>2</option>
+   <option value = 3>3</option>
+   <option value = 4>4</option>
+   <option value = 5>5</option>
+   <option value = 6>6</option>
+   <option value = 7>7</option>
+   <option value = 8>8</option>
+   <option value = 9>9</option>
+</select> 
+
+<select id = "EndMin2">
+   <option value = "">0</option>
+   <option value = 1>1</option>
+   <option value = 2>2</option>
+   <option value = 3>3</option>
+   <option value = 4>4</option>
+   <option value = 5>5</option>
+   <option value = 6>6</option>
+   <option value = 7>7</option>
+   <option value = 8>8</option>
+   <option value = 9>9</option>
+</select> 
        
 <select id = "AMPMEnd">
    <option value = 0>AM</option>
@@ -90,75 +193,74 @@ onClick="document.location.reload(true)">
       
 <script>
 function Calculate() {
-var StartHour = +document.getElementById("StartHour").value;
-var StartMin = +document.getElementById("StartMin").value;
-var EndHour = +document.getElementById("EndHour").value;
-var EndMin= +document.getElementById("EndMin").value;
+
+// Old Code:
+//var StartHour = +document.getElementById("StartHour").value; 
+//var StartMin = +document.getElementById("StartMin").value;
+//var EndHour = +document.getElementById("EndHour").value; 
+//var EndMin= +document.getElementById("EndMin").value;
+
 <!-- help with drop down getting values -->
 <!-- https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-  -->
+
+var element = document.getElementById("StartHour");
+var StartHour = parseInt(element.options[element.selectedIndex].value, 10);
+
+var element = document.getElementById("EndHour");
+var EndHour = parseInt(element.options[element.selectedIndex].value, 10);
+
+var element = document.getElementById("StartMin1");
+var StartMin1 = parseInt(element.options[element.selectedIndex].value, 10);
+var element = document.getElementById("StartMin2");
+var StartMin2 = parseInt(element.options[element.selectedIndex].value, 10);
+
+var element = document.getElementById("EndMin1");
+var EndMin1 = parseInt(element.options[element.selectedIndex].value, 10);
+var element = document.getElementById("EndMin2");
+var EndMin2 = parseInt(element.options[element.selectedIndex].value, 10);
+
 var element = document.getElementById("AMPMStart");
 var AMPMStart = parseInt(element.options[element.selectedIndex].value, 10);
 var element = document.getElementById("AMPMEnd");
 var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
+
+var EndMin = 
+
+ if ( ( ( (AMPMStart == 0) && (AMPMEnd == 12) ) || ( (AMPMStart == 12) && (AMPMEnd == 0) ) ) && EndHour != 12 ) {
+       EndHour += 12;
+       alert(EndHour);
+   };
   
-  if (EndHour == 12 && AMPMEnd == 12 ) //Don't add 12 if it Equals 12 PM Noon!
-  {
-  var TotalEndMin = ((EndHour) * 60) + EndMin;
-  }
-  else if (EndHour == 12 && AMPMEnd == 0) //Add 12 if it Equals Midnight!
-  {
-  var TotalEndMin = ((EndHour + 12) * 60) + EndMin;
-  }
-  else
-  {
-  var TotalEndMin = ((EndHour + AMPMEnd) * 60) + EndMin;
-  }
+    if ( EndHour == 12 && AMPMEnd == 0 && StartHour != 12) {EndHour = 24; };
+  if (EndHour == 12 && AMPMEnd == 12) { EndHour = 12; };
   
-  
-  var TotalStartMin = ((StartHour + AMPMStart) * 60) + StartMin;
+  var TotalEndMin = (EndHour * 60) + EndMin;
+  var TotalStartMin = (StartHour * 60) + StartMin;
   var TotalMin = TotalEndMin - TotalStartMin
+  
   var AddMin= 0;
   var AddMin= (TotalMin % 15 >= 5) ? 15 - (TotalMin % 15): (TotalMin % 15) * -1;
   TotalMin += AddMin;
+  
   var TotalDollar = ((TotalMin / 60) * 18)
-  if (TotalDollar >= 0 && TotalDollar < 18) { TotalDollar = 18 };
+  if (TotalDollar > 0 && TotalDollar < 18) { TotalDollar = 18 };
   
 var MorningExtra = 0;
 var NightExtra = 0;
 
-
-if (AMPMStart == 0) 
-  {
-  
-  if (AMPMEnd == 0 && EndHour >= 8){
-     MorningExtra =  (8 * 60) - ((StartHour * 60) + StartMin);
-  }
-  else {
-    MorningExtra =  ( (EndHour -StartHour) * 60) + StartMin; 
-  }
-  
+  MorningExtra =  (8 * 60) - ((StartHour * 60) + StartMin);
+     
   var MorningExtraMin = (MorningExtra % 15 >= 5) ? 15 - (MorningExtra % 15): (MorningExtra % 15) * -1;
       MorningExtra += MorningExtraMin;
       MorningExtra = ((MorningExtra / 60) * 2);
-      if (MorningExtra < 0) { MorningEtra = 0 };
-   }
+      //if (MorningExtra < 0) { MorningExtra = 0 };
 
- 
-if (AMPMEnd == 12 && EndHour != 12) // PM but not 12 PM 
-  {
-  
-  if (AMPMStart == 12 && StartHour > 5){
-      NightExtra = ( (EndHour - StartHour) * 60) + StartMin;
-  }
-  else {
-      NightExtra = ((EndHour * 60)+ EndMin) - (5  * 60);
-  }
+   NightExtra = ((EndHour * 60)+ EndMin) - (5  * 60);
   
   var NightExtraMin = (NightExtra % 15 >= 5) ? 15 - (NightExtra % 15): (NightExtra % 15) * -1;
       NightExtra += NightExtraMin;
       NightExtra = ((NightExtra / 60) * 2);
-      if (NightExtra < 0) { NightExtra = 0 };
-  }
+     // if (NightExtra < 0) { NightExtra = 0 };
   
  //TotalDollar = TotalDollar  + MorningExtra + NightExtra; // Add Morning and Night extra Minutes
 
