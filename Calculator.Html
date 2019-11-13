@@ -105,10 +105,6 @@ function limit(element)
    <option value = 3>3</option>
    <option value = 4>4</option>
    <option value = 5>5</option>
-   <option value = 6>6</option>
-   <option value = 7>7</option>
-   <option value = 8>8</option>
-   <option value = 9>9</option>
 </select> 
 
 <select id = "StartMin2">
@@ -150,20 +146,16 @@ function limit(element)
 <!-- <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndMin"> Old Code -->
 
 <select id = "EndMin1">
-   <option value = "">0</option>
+   <option value = 0>0</option>
    <option value = 1>1</option>
    <option value = 2>2</option>
    <option value = 3>3</option>
    <option value = 4>4</option>
    <option value = 5>5</option>
-   <option value = 6>6</option>
-   <option value = 7>7</option>
-   <option value = 8>8</option>
-   <option value = 9>9</option>
 </select> 
 
 <select id = "EndMin2">
-   <option value = "">0</option>
+   <option value = 0>0</option>
    <option value = 1>1</option>
    <option value = 2>2</option>
    <option value = 3>3</option>
@@ -224,7 +216,8 @@ var AMPMStart = parseInt(element.options[element.selectedIndex].value, 10);
 var element = document.getElementById("AMPMEnd");
 var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
 
-var EndMin = 
+var StartMin = (StartMin1 * 10) + StartMin2;
+var EndMin = (EndMin1 * 10) + EndMin2;
 
  if ( ( ( (AMPMStart == 0) && (AMPMEnd == 12) ) || ( (AMPMStart == 12) && (AMPMEnd == 0) ) ) && EndHour != 12 ) {
        EndHour += 12;
