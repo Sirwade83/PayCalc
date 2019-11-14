@@ -2,109 +2,22 @@
   
 <html> 
     <head> 
-        <title> 
-              CommGap Pay Calculator
-        </title> 
-      <!-- Css solution to width problem -->
-<!-- https://stackoverflow.com/questions/22709792/input-type-number-wont-resize -->
-
-        <style>
-        input[type=text]{
-           width: 20px;
-           text-align: center; 
-           }          
-
-        </style>
-
-<!--Make full screen code from: -->
-<!-- https://www.w3schools.com/css/css_rwd_viewport.asp -->
-
-<!-- https://stackoverflow.com/questions/6483425/prevent-iphone-from-zooming-in-on-select-in-web-app -->
-
-<meta name="viewport" 
-content="width=device-width,
- minimum-scale=1.0, 
-maximum-scale=1.0, 
-user-scalable=no">
-
-
-<!-- To disable Auto zoom -->
-<!-- https://stackoverflow.com/questions/2989263/disable-auto-zoom-in-input-text-tag-safari-on-iphone -->
-<style>
-body {
-  font-size: 16px;
-}
-input[type="text"] {
-  font-size: inherit;
-}
-
-</style>
-
-    </head>
-
-    <body>
-
-<!-- JavaScript to limit number of spaces able to be entered -->
-<!-- https://stackoverflow.com/questions/9841363/how-to-restrict-number-of-characters-that-can-be-entered-in-html5-number-input-f -->
+        <title>
+<body>
 
 <script>
-function limit(element)
-{
-    var max_chars = 2;
-    if(element.value.length > max_chars) {
-        element.value = element.value.substr(0, max_chars);
-    }
-}
-</script>
-    
-<!-- Code example from https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_number_get -->          
-<!-- Added Drop down box https://www.dummies.com/web-design-development/site-development/how-to-create-a-drop-down-list-in-an-html5-form/  -->
-      
-<h2><p>Enter Your Work Times:</p></h2><h4>
 
- <input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartHour">&nbsp;:
-<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="StartMin">
+Calculate ();
 
-<select id = "AMPMStart">
-   <option value = 0>AM</option>
-   <option value = 12>PM</option> 
-</select> -
-
-<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndHour">&nbsp;:
-<input type="text" onkeydown="limit(this);" onkeyup="limit(this);" id="EndMin"> 
-       
-<select id = "AMPMEnd">
-   <option value = 0>AM</option>
-   <option value = 12>PM</option>
-   </select> </h4>
-
-<p>Click the button to calculate</p>
-
-<button onclick="Calculate()">Calculate</button>
-
-<!-- https://www.quackit.com/javascript/javascript_refresh_page.cfm -->
-<input type="button" value="Clear Times" 
-onClick="document.location.reload(true)">
-
-<p id="Answer"></p>
-<p id="BreakDown"> </p>
-
-      
-<script>
 function Calculate() {
 
-var StartHour = +document.getElementById("StartHour").value; 
-var StartMin = +document.getElementById("StartMin").value;
-var EndHour = +document.getElementById("EndHour").value; 
-var EndMin= +document.getElementById("EndMin").value;
+var StartHour = 1;
+var StartMin = 30;
+var EndHour = 2;
+var EndMin= 30;
 
-<!-- help with drop down getting values -->
-<!-- https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-  -->
-
-var element = document.getElementById("AMPMStart");
-var AMPMStart = parseInt(element.options[element.selectedIndex].value, 10);
-var element = document.getElementById("AMPMEnd");
-var AMPMEnd = parseInt(element.options[element.selectedIndex].value, 10);
+var AMPMStart = 12;
+var AMPMEnd = 12;
 
 var RealEndHour = EndHour; // Save Ending Hour before adding 12 
     
@@ -142,27 +55,17 @@ var NightExtra = 0;
       NightExtra = ((NightExtra / 60) * 2);
       if (NightExtra < 0) { NightExtra = 0 };
  
-  if ( AMPMStart == 12 && AMPMEnd == 0) { TotalDollar = 0;}; // If PM To AM Show Error:
+  if ( AMPMStart == 12 && AMPMEnd == 0) { TotalDollar = 0;}; 
 
 var RegularHours = TotalDollar / 18;
-TotalDollar = TotalDollar  + MorningExtra + NightExtra; // Add Morning and Night extra Minues
+TotalDollar = TotalDollar  + MorningExtra + NightExtra;
 
-// If no money, Not a number, after 10 PM, before 6 AM shows an error! 
 var newstring = ( (TotalDollar <= 0) || (RealEndHour  > 9 && AMPMEnd == 12 && RealEndHour != 12) || (StartHour < 6 && AMPMStart == 0) || (TotalDollar != TotalDollar) || (StartHour == 12 && AMPMStart == 0) || (RealEndHour == 12 && AMPMEnd == 0) || (StartHour < 0) || (StartHour > 12) || (Number.isInteger(StartHour) == false) || (RealEndHour < 0) || (RealEndHour > 12) || (Number.isInteger(RealEndHour) == false ) || (StartMin < 0) || (StartMin > 59) || (Number.isInteger(StartMin) == false ) || (EndMin < 0) || (EndMin > 59) || (Number.isInteger(EndMin) == false)) ? "ERROR Check the times": 
  "$" + TotalDollar.toFixed(2);
  
- document.getElementById("Answer").innerHTML = newstring;
- 
- if (newstring.indexOf('$') > -1) {
- document.getElementById("BreakDown").innerHTML = "(Regular Hours: " + RegularHours +")"
- if (MorningExtra > 0) { 
- document.getElementById("BreakDown").innerHTML += " (Morning Hours: " + MorningExtra / 2 + ")"}
-if (NightExtra > 0) {
-document.getElementById("BreakDown").innerHTML += " (Night Hours: " + NightExtra / 2 + ")"}" (Night Hours " + NightExtra / 2 + ")" 
-} 
-
-else {document.getElementById("BreakDown").innerHTML = ""}
-
+ if ( (newstring.indexOf('$') > -1) = false) {
+document.write(StartHour + "-" + RealEndHour + " R:" + RegularHours +" M:" + (MorningExtra / 2)+" N:" +  (MorningExtra / 2);
+  }
 }
 </script>
     
