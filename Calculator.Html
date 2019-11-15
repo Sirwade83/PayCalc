@@ -148,7 +148,7 @@ var RegularHours = TotalDollar / 18;
 TotalDollar = TotalDollar  + MorningExtra + NightExtra; // Add Morning and Night extra Minues
 
 // If no money, Not a number, after 10 PM, before 6 AM shows an error! 
-var newstring = ( (TotalDollar <= 0) || (AMPMStart == 12 && AMPMEnd == 12 && RealEndHour == 12) || (RealEndHour  > 9 && AMPMEnd == 12 && RealEndHour != 12) || (StartHour < 6 && AMPMStart == 0) || (TotalDollar != TotalDollar) || (StartHour == 12 && AMPMStart == 0) || (RealEndHour == 12 && AMPMEnd == 0) || (StartHour < 0) || (StartHour > 12) || (Number.isInteger(StartHour) == false) || (RealEndHour < 0) || (RealEndHour > 12) || (Number.isInteger(RealEndHour) == false ) || (StartMin < 0) || (StartMin > 59) || (Number.isInteger(StartMin) == false ) || (EndMin < 0) || (EndMin > 59) || (Number.isInteger(EndMin) == false)) ? "ERROR Check the times": 
+var newstring = ( (TotalDollar <= 0) || (StartHour == 0 || RealEndHour == 0) || (AMPMStart == 12 && AMPMEnd == 12 && RealEndHour == 12) || (RealEndHour  > 9 && AMPMEnd == 12 && RealEndHour != 12) || (StartHour < 6 && AMPMStart == 0) || (TotalDollar != TotalDollar) || (StartHour == 12 && AMPMStart == 0) || (RealEndHour == 12 && AMPMEnd == 0) || (StartHour < 0) || (StartHour > 12) || (Number.isInteger(StartHour) == false) || (RealEndHour < 0) || (RealEndHour > 12) || (Number.isInteger(RealEndHour) == false ) || (StartMin < 0) || (StartMin > 59) || (Number.isInteger(StartMin) == false ) || (EndMin < 0) || (EndMin > 59) || (Number.isInteger(EndMin) == false)) ? "ERROR Check the times": 
  "$" + TotalDollar.toFixed(2);
  
  document.getElementById("Answer").innerHTML = newstring;
