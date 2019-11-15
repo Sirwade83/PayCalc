@@ -5,6 +5,8 @@ $18 per hour in 15 min increments.
 If it's 5 mins past 15 it rounds up
 Min amount is 18.
 
+Before 8 AM and after 5 PM is $20
+
 Try me out: 
 http://htmlpreview.github.io/?https://github.com/ZWhiteShadow/PayCalc/blob/master/Calculator.Html
 
