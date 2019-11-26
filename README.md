@@ -7,8 +7,7 @@ Min amount is 18.
 
 Before 8 AM and after 5 PM is $20
 
-Try me out: 
-http://htmlpreview.github.io/?https://github.com/ZWhiteShadow/PayCalc/blob/master/Calculator.Html
+Try me out: www.bit.ly/2OKwmOM
 
 Css solution to width problem:
 https://stackoverflow.com/questions/22709792/input-type-number-wont-resize
